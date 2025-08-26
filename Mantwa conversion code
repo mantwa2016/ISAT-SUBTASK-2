@@ -1,9 +1,19 @@
 #include <iostream>
+#include <cmath>
+#include <string>
+#include <algorithm>
 using namespace std;
+
+// Function prototypes
+void decToBin();
+void binToDec();
+void decToHex();
+void hexToDec();
 
 int main() {
     int choice;
     
+    cout << "Number Conversion Program\n";
     cout << "1. Decimal to Binary\n";
     cout << "2. Binary to Decimal\n";
     cout << "3. Decimal to Hexadecimal\n";
@@ -11,12 +21,16 @@ int main() {
     cout << "Enter choice (1-4): ";
     cin >> choice;
     
-    cout << "Feature coming soon!";
+    switch(choice) {
+        case 1: decToBin(); break;
+        case 2: binToDec(); break;
+        case 3: decToHex(); break;
+        case 4: hexToDec(); break;
+        default: cout << "Invalid choice!";
+    }
     
     return 0;
 }
-#include <iostream>
-using namespace std;
 
 void decToBin() {
     int num;
@@ -43,30 +57,23 @@ void decToBin() {
     }
 }
 
-int main() {
-    int choice;
+void binToDec() {
+    string binary;
+    cout << "Enter binary number: ";
+    cin >> binary;
     
-    cout << "1. Decimal to Binary\n";
-    cout << "2. Binary to Decimal\n";
-    cout << "3. Decimal to Hexadecimal\n";
-    cout << "4. Hexadecimal to Decimal\n";
-    cout << "Enter choice (1-4): ";
-    cin >> choice;
+    int decimal = 0;
+    int power = 0;
     
-    if (choice == 1) {
-        decToBin();
-    } else {
-        cout << "Feature coming soon!";
+    for (int i = binary.length() - 1; i >= 0; i--) {
+        if (binary[i] == '1') {
+            decimal += pow(2, power);
+        }
+        power++;
     }
     
-    return 0;
+    cout << "Decimal: " << decimal;
 }
-#include <iostream>
-#include <cmath>
-#include <algorithm>
-using namespace std;
-
-// ... (previous functions remain unchanged)
 
 void decToHex() {
     int num;
@@ -109,6 +116,9 @@ void hexToDec() {
             value = c - '0';
         } else if (c >= 'A' && c <= 'F') {
             value = 10 + (c - 'A');
+        } else {
+            cout << "Invalid hexadecimal digit!" << endl;
+            return;
         }
         
         decimal += value * pow(16, power);
@@ -117,63 +127,3 @@ void hexToDec() {
     
     cout << "Decimal: " << decimal;
 }
-
-int main() {
-    int choice;
-    
-    cout << "1. Decimal to Binary\n";
-    cout << "2. Binary to Decimal\n";
-    cout << "3. Decimal to Hexadecimal\n";
-    cout << "4. Hexadecimal to Decimal\n";
-    cout << "Enter choice (1-4): ";
-    cin >> choice;
-    
-    if (choice == 1) {
-        decToBin();
-    } else if (choice == 2) {
-        binToDec();
-    } else if (choice == 3) {
-        decToHex();
-    } else if (choice == 4) {
-        hexToDec();
-    } else {
-        cout << "Invalid choice!";
-    }
-    
-    return 0;
-}
-
-#include <cmath>
-#include <string>
-#include <algorithm>
-using namespace std;
-
-// Function prototypes
-void decToBin();
-void binToDec();
-void decToHex();
-void hexToDec();
-
-int main() {
-    int choice;
-    
-    cout << "Number Conversion Program\n";
-    cout << "1. Decimal to Binary\n";
-    cout << "2. Binary to Decimal\n";
-    cout << "3. Decimal to Hexadecimal\n";
-    cout << "4. Hexadecimal to Decimal\n";
-    cout << "Enter choice (1-4): ";
-    cin >> choice;
-    
-    switch(choice) {
-        case 1: decToBin(); break;
-        case 2: binToDec(); break;
-        case 3: decToHex(); break;
-        case 4: hexToDec(); break;
-        default: cout << "Invalid choice!";
-    }
-    
-    return 0;
-}
-
-// ... (all the function implementations from previous commit)
