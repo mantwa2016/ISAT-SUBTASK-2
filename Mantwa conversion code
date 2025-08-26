@@ -1,0 +1,17 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int choice;
+    
+    cout << "1. Decimal to Binary\n";
+    cout << "2. Binary to Decimal\n";
+    cout << "3. Decimal to Hexadecimal\n";
+    cout << "4. Hexadecimal to Decimal\n";
+    cout << "Enter choice (1-4): ";
+    cin >> choice;
+    
+    cout << "Feature coming soon!";
+    
+    return 0;
+}
