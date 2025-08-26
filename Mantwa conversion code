@@ -15,3 +15,49 @@ int main() {
     
     return 0;
 }
+#include <iostream>
+using namespace std;
+
+void decToBin() {
+    int num;
+    cout << "Enter decimal number: ";
+    cin >> num;
+    
+    cout << "Binary: ";
+    if (num == 0) {
+        cout << "0";
+        return;
+    }
+    
+    int binary[32];
+    int i = 0;
+    
+    while (num > 0) {
+        binary[i] = num % 2;
+        num = num / 2;
+        i++;
+    }
+    
+    for (int j = i - 1; j >= 0; j--) {
+        cout << binary[j];
+    }
+}
+
+int main() {
+    int choice;
+    
+    cout << "1. Decimal to Binary\n";
+    cout << "2. Binary to Decimal\n";
+    cout << "3. Decimal to Hexadecimal\n";
+    cout << "4. Hexadecimal to Decimal\n";
+    cout << "Enter choice (1-4): ";
+    cin >> choice;
+    
+    if (choice == 1) {
+        decToBin();
+    } else {
+        cout << "Feature coming soon!";
+    }
+    
+    return 0;
+}
