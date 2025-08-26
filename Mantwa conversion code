@@ -61,3 +61,119 @@ int main() {
     
     return 0;
 }
+#include <iostream>
+#include <cmath>
+#include <algorithm>
+using namespace std;
+
+// ... (previous functions remain unchanged)
+
+void decToHex() {
+    int num;
+    cout << "Enter decimal number: ";
+    cin >> num;
+    
+    cout << "Hexadecimal: ";
+    if (num == 0) {
+        cout << "0";
+        return;
+    }
+    
+    string hex;
+    char hexChars[] = "0123456789ABCDEF";
+    
+    while (num > 0) {
+        int remainder = num % 16;
+        hex = hexChars[remainder] + hex;
+        num /= 16;
+    }
+    
+    cout << hex;
+}
+
+void hexToDec() {
+    string hex;
+    cout << "Enter hexadecimal number: ";
+    cin >> hex;
+    
+    transform(hex.begin(), hex.end(), hex.begin(), ::toupper);
+    
+    int decimal = 0;
+    int power = 0;
+    
+    for (int i = hex.length() - 1; i >= 0; i--) {
+        char c = hex[i];
+        int value;
+        
+        if (c >= '0' && c <= '9') {
+            value = c - '0';
+        } else if (c >= 'A' && c <= 'F') {
+            value = 10 + (c - 'A');
+        }
+        
+        decimal += value * pow(16, power);
+        power++;
+    }
+    
+    cout << "Decimal: " << decimal;
+}
+
+int main() {
+    int choice;
+    
+    cout << "1. Decimal to Binary\n";
+    cout << "2. Binary to Decimal\n";
+    cout << "3. Decimal to Hexadecimal\n";
+    cout << "4. Hexadecimal to Decimal\n";
+    cout << "Enter choice (1-4): ";
+    cin >> choice;
+    
+    if (choice == 1) {
+        decToBin();
+    } else if (choice == 2) {
+        binToDec();
+    } else if (choice == 3) {
+        decToHex();
+    } else if (choice == 4) {
+        hexToDec();
+    } else {
+        cout << "Invalid choice!";
+    }
+    
+    return 0;
+}
+
+#include <cmath>
+#include <string>
+#include <algorithm>
+using namespace std;
+
+// Function prototypes
+void decToBin();
+void binToDec();
+void decToHex();
+void hexToDec();
+
+int main() {
+    int choice;
+    
+    cout << "Number Conversion Program\n";
+    cout << "1. Decimal to Binary\n";
+    cout << "2. Binary to Decimal\n";
+    cout << "3. Decimal to Hexadecimal\n";
+    cout << "4. Hexadecimal to Decimal\n";
+    cout << "Enter choice (1-4): ";
+    cin >> choice;
+    
+    switch(choice) {
+        case 1: decToBin(); break;
+        case 2: binToDec(); break;
+        case 3: decToHex(); break;
+        case 4: hexToDec(); break;
+        default: cout << "Invalid choice!";
+    }
+    
+    return 0;
+}
+
+// ... (all the function implementations from previous commit)
