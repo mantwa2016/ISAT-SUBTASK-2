@@ -31,7 +31,7 @@ void addOrder() {//Add order function
     cout << "Order added!\n";
 }
 
-void showOrders() {
+void showOrders() {//Display Orders: Added the ability to view all existing orders
     if (count == 0) {
         cout << "No orders yet.\n";
         return;
