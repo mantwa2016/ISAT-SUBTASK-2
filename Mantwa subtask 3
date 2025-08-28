@@ -1,0 +1,86 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+struct Order {
+    int id;
+    string customer;
+    int quantity;
+    double price;
+};
+
+const int MAX = 100;
+Order orders[MAX];
+int count = 0;
+
+void addOrder() {
+    if (count >= MAX) {
+        cout << "Order list full!\n";
+        return;
+    }
+    cout << "Enter Order ID: ";
+    cin >> orders[count].id;
+    cin.ignore();
+    cout << "Customer Name: ";
+    getline(cin, orders[count].customer);
+    cout << "Quantity: ";
+    cin >> orders[count].quantity;
+    cout << "Price: ";
+    cin >> orders[count].price;
+    count++;
+    cout << "Order added!\n";
+}
+
+void showOrders() {
+    if (count == 0) {
+        cout << "No orders yet.\n";
+        return;
+    }
+    for (int i = 0; i < count; i++) {
+        cout << "ID: " << orders[i].id << ", Customer: " << orders[i].customer 
+             << ", Qty: " << orders[i].quantity << ", Price: $" << orders[i].price << endl;
+    }
+}
+
+void findOrder() {
+    int id;
+    cout << "Enter Order ID: ";
+    cin >> id;
+    for (int i = 0; i < count; i++) {
+        if (orders[i].id == id) {
+            cout << "Order found: " << orders[i].customer << ", Qty: " 
+                 << orders[i].quantity << ", Price: $" << orders[i].price << endl;
+            return;
+        }
+    }
+    cout << "Order not found.\n";
+}
+
+void showRevenue() {
+    double total = 0;
+    for (int i = 0; i < count; i++) {
+        total += orders[i].quantity * orders[i].price;
+    }
+    cout << "Total Revenue: $" << total << endl;
+}
+
+int main() {
+    int choice;
+    do {
+        cout << "\nMagwinya Magic Order System\n";
+        cout << "1. Add Order\n2. Show Orders\n3. Find Order\n4. Total Revenue\n5. Exit\n";
+        cout << "Choose: ";
+        cin >> choice;
+        
+        switch(choice) {
+            case 1: addOrder(); break;
+            case 2: showOrders(); break;
+            case 3: findOrder(); break;
+            case 4: showRevenue(); break;
+            case 5: cout << "Goodbye!\n"; break;
+            default: cout << "Invalid choice!\n";
+        }
+    } while (choice != 5);
+    
+    return 0;
+}
