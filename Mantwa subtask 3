@@ -13,7 +13,7 @@ const int MAX = 100;
 Order orders[MAX];
 int count = 0;
 
-void addOrder() {
+void addOrder() {//Add order function
     if (count >= MAX) {
         cout << "Order list full!\n";
         return;
