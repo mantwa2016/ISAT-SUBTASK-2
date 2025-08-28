@@ -56,7 +56,7 @@ void findOrder() {//Search Function: Implemented order search by ID functionalit
     cout << "Order not found.\n";
 }
 
-void showRevenue() {
+void showRevenue() {//Revenue Calculation: Added the total revenue calculation feature
     double total = 0;
     for (int i = 0; i < count; i++) {
         total += orders[i].quantity * orders[i].price;
