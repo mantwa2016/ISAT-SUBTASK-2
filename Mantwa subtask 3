@@ -42,7 +42,7 @@ void showOrders() {//Display Orders: Added the ability to view all existing orde
     }
 }
 
-void findOrder() {
+void findOrder() {//Search Function: Implemented order search by ID functionality
     int id;
     cout << "Enter Order ID: ";
     cin >> id;
